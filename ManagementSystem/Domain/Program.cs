@@ -29,6 +29,9 @@ namespace ManagementSystem
                     case "1":
                         AddProduct();
                         break;
+                    case "2":
+                        ListProducts();
+                        break;
                     case "6":
                         return;
 
@@ -69,6 +72,20 @@ namespace ManagementSystem
                 MyLogMessage($"Error : {ex.Message}", ConsoleColor.Red);
             }
 
+        }
+        private static void ListProducts()
+        {
+            List<Product>listo=Inventory.ViewProduct();
+            try
+            {
+                MyLogMessage("Inventory", ConsoleColor.Green);
+                foreach (Product p in listo)
+                    Console.WriteLine($"Name: {p.Name}          Price: {p.Price}            Quantity: {p.Quantity}");
+            }
+            catch (Exception e)
+            {
+                MyLogMessage("Error occurred",ConsoleColor.Red);
+            }
         }
     }
 }
