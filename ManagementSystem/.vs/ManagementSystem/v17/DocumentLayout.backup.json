@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\rrash\\Desktop\\Simple-Inventory-Management-System\\ManagementSystem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{58FD8E6A-D4C6-4D61-87FC-2940DFA02A0C}|ManagementSystem.csproj|c:\\users\\rrash\\desktop\\simple-inventory-management-system\\managementsystem\\domain\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{58FD8E6A-D4C6-4D61-87FC-2940DFA02A0C}|ManagementSystem.csproj|solutionrelative:domain\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{58FD8E6A-D4C6-4D61-87FC-2940DFA02A0C}|ManagementSystem.csproj|c:\\users\\rrash\\desktop\\simple-inventory-management-system\\managementsystem\\domain\\datahandeling\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{58FD8E6A-D4C6-4D61-87FC-2940DFA02A0C}|ManagementSystem.csproj|solutionrelative:domain\\datahandeling\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58FD8E6A-D4C6-4D61-87FC-2940DFA02A0C}|ManagementSystem.csproj|c:\\users\\rrash\\desktop\\simple-inventory-management-system\\managementsystem\\domain\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58FD8E6A-D4C6-4D61-87FC-2940DFA02A0C}|ManagementSystem.csproj|solutionrelative:domain\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,27 +23,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\rrash\\Desktop\\Simple-Inventory-Management-System\\ManagementSystem\\Domain\\Program.cs",
-              "RelativeDocumentMoniker": "Domain\\Program.cs",
-              "ToolTip": "C:\\Users\\rrash\\Desktop\\Simple-Inventory-Management-System\\ManagementSystem\\Domain\\Program.cs",
-              "RelativeToolTip": "Domain\\Program.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAuwCkAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-03T21:06:06.488Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "Inventory.cs",
               "DocumentMoniker": "C:\\Users\\rrash\\Desktop\\Simple-Inventory-Management-System\\ManagementSystem\\Domain\\DataHandeling\\Inventory.cs",
               "RelativeDocumentMoniker": "Domain\\DataHandeling\\Inventory.cs",
               "ToolTip": "C:\\Users\\rrash\\Desktop\\Simple-Inventory-Management-System\\ManagementSystem\\Domain\\DataHandeling\\Inventory.cs",
               "RelativeToolTip": "Domain\\DataHandeling\\Inventory.cs",
-              "ViewState": "AgIAADEAAAAAAAAAAAAgwEQAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAYwDkAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-03T16:24:37.159Z",
+              "WhenOpened": "2024-09-03T22:11:30.161Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\rrash\\Desktop\\Simple-Inventory-Management-System\\ManagementSystem\\Domain\\Program.cs",
+              "RelativeDocumentMoniker": "Domain\\Program.cs",
+              "ToolTip": "C:\\Users\\rrash\\Desktop\\Simple-Inventory-Management-System\\ManagementSystem\\Domain\\Program.cs",
+              "RelativeToolTip": "Domain\\Program.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwCEAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-03T22:11:17.029Z",
               "EditorCaption": ""
             }
           ]

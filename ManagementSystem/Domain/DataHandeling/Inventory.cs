@@ -54,9 +54,7 @@ namespace ManagementSystem.Domain
                 Console.WriteLine("{0,-25} {1,-20} {2,-15} ", "Name", "Price", "Quntity\n");
                 foreach (Product p in listo)
                 {
-                    if (editEnable)
-                    {
-                        if (edited.Equals(p.Name))
+                        if (edited.Equals(p.Name) && editEnable)
                         {
                             Console.ForegroundColor = ConsoleColor.DarkGreen;
                             Console.WriteLine("{0,-25} {1,-20} {2,-15}", p.Name, p.Price, p.Quantity);
@@ -64,7 +62,6 @@ namespace ManagementSystem.Domain
                         }
                         else
                             Console.WriteLine("{0,-25} {1,-20} {2,-15}", p.Name, p.Price, p.Quantity);
-                    }
                 }
                 Console.WriteLine();
             }
