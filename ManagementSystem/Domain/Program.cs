@@ -21,14 +21,14 @@ namespace ManagementSystem
                 Console.WriteLine("4. Delete a product");
                 Console.WriteLine("5. Search for a product");
                 Console.WriteLine("6. Exit", ConsoleColor.Yellow);
-                Console.Write("Pick an option 1 -> 6 :");
+                Console.Write("Pick an option 1 => 6 :");
                 Console.ResetColor();
                 var picked=Console.ReadLine();
 
                 switch (picked)
                 {
                     case "1":
-                        AddProduct();
+                        Inventory.AddProduct();
                         break;
                     case "2":
                         Inventory.ListProducts();
@@ -37,10 +37,10 @@ namespace ManagementSystem
                         Inventory.EditProduct();
                         break;
                     case "4":
-                        DeleteProduct();
+                        Inventory.DeleteProduct();
                         break;
                     case "5":
-                        SearchProduct();
+                        Inventory.SearchProduct();
                         break;
                     case "6":
                         return;
@@ -52,41 +52,6 @@ namespace ManagementSystem
                 Console.WriteLine("Press Enter to continue...");
                 Console.ReadLine();// important so the consol dont close and wait for messages
             }
-        }
-
-        private static void SearchProduct()
-        {
-            throw new NotImplementedException();
-        }
-
-        private static void DeleteProduct()
-        {
-            throw new NotImplementedException();
-        }
-
-        private static void AddProduct()
-        {
-            string name;
-            decimal price;
-            int quantity;
-            Console.Write("Enter the product name: ");
-            name= Console.ReadLine();
-            Console.Write("Enter the product price: ");
-            price=Decimal.Parse(Console.ReadLine());
-            Console.Write("Enter the product quantity: ");
-            quantity=Int32.Parse(Console.ReadLine());
-            Product product = new Product(name,quantity,price);
-            try
-            {
-                Inventory.AddProduct(product);
-                FormatColoring.MyLogMessage("Product is added successfully.", ConsoleColor.Green);
-            }
-            catch (Exception ex)
-            {
-
-                FormatColoring.MyLogMessage($"Error : {ex.Message}", ConsoleColor.Red);
-            }
-
         }
         
     }
