@@ -3,7 +3,9 @@ using ManagementSystem.Domain.ProdcutManagment;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -43,7 +45,7 @@ namespace ManagementSystem.Domain
             }
 
         }
-        public static void ListProducts()
+        public static void ListProducts(string edited,bool editEnable)
         {
             List<Product> listo = ViewProduct();
             try
@@ -51,7 +53,20 @@ namespace ManagementSystem.Domain
                 FormatColoring.MyLogMessage("Inventory", ConsoleColor.Green);
                 Console.WriteLine("{0,-25} {1,-20} {2,-15} ", "Name", "Price", "Quntity\n");
                 foreach (Product p in listo)
-                    Console.WriteLine("{0,-25} {1,-20} {2,-15}", p.Name, p.Price, p.Quantity);
+                {
+                    if (editEnable)
+                    {
+                        if (edited.Equals(p.Name))
+                        {
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                            Console.WriteLine("{0,-25} {1,-20} {2,-15}", p.Name, p.Price, p.Quantity);
+                            Console.ResetColor();
+                        }
+                        else
+                            Console.WriteLine("{0,-25} {1,-20} {2,-15}", p.Name, p.Price, p.Quantity);
+                    }
+                }
+                Console.WriteLine();
             }
             catch (Exception e)
             {
@@ -154,7 +169,7 @@ namespace ManagementSystem.Domain
                     }
                 }
                 WriteProductOnFile(products);
-                ListProducts();
+                ListProducts(name,true);
             }
             else
             {
@@ -193,6 +208,14 @@ namespace ManagementSystem.Domain
         {
             Console.WriteLine($"Enter the name of the product... ");
             string name = Console.ReadLine();
+            var p= ViewProduct();
+            int i = p.FindIndex(x => x.Name.Equals(name));
+            if (i != -1)
+            {
+                FormatColoring.MyLogMessage("Founded :)",ConsoleColor.Green);
+                FormatColoring.MyLogMessage($"Name: {p[i].Name} Price: {p[i].Price} Quantity: {p[i].Quantity}", ConsoleColor.DarkGreen);
+            }
+            else FormatColoring.MyLogMessage("Not Founded !!", ConsoleColor.Red);
         }
     }
 }

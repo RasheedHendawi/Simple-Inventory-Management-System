@@ -31,7 +31,7 @@ namespace ManagementSystem
                         Inventory.AddProduct();
                         break;
                     case "2":
-                        Inventory.ListProducts();
+                        Inventory.ListProducts("", false);
                         break;
                     case "3":
                         Inventory.EditProduct();
