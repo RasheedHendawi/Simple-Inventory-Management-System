@@ -1,6 +1,8 @@
-﻿using ManagementSystem.Domain.ProdcutManagment;
+﻿using ManagementSystem.Domain.DataHandeling;
+using ManagementSystem.Domain.ProdcutManagment;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +19,22 @@ namespace ManagementSystem.Domain
                 W.WriteLine(p.ToString());
             }
         }
-        public static List<Product> ViewProduct()
+        public static void ListProducts()
+        {
+            List<Product> listo = ViewProduct();
+            try
+            {
+                FormatColoring.MyLogMessage("Inventory", ConsoleColor.Green);
+                Console.WriteLine("{0,-25} {1,-20} {2,-15} ", "Name", "Price", "Quntity\n");
+                foreach (Product p in listo)
+                    Console.WriteLine("{0,-25} {1,-20} {2,-15}", p.Name, p.Price, p.Quantity);
+            }
+            catch (Exception e)
+            {
+                FormatColoring.MyLogMessage($"Error occurred{e}", ConsoleColor.Red);
+            }
+        }
+        private static List<Product> ViewProduct()
         {
             List<Product> products = new List<Product>();
             if (File.Exists(pathFile))
@@ -46,9 +63,89 @@ namespace ManagementSystem.Domain
             }
             return products;
         }
-        public static void EditProduct(string name)
+        public static void EditProduct()
         {
-            
+            Console.WriteLine($"Enter the name of the product... ");
+            string name=Console.ReadLine();
+            List<Product> products = ViewProduct();
+            int index = products.FindIndex(x => x.Name.Equals(name));
+            if (index != -1)
+            {
+                bool FinishedLoop = true;
+                while (FinishedLoop)
+                {
+                    Console.Clear();
+                    FormatColoring.MyLogMessage($"You are now Editing {products[index].Name}.", ConsoleColor.Green);
+                    Console.WriteLine("1. Edit the name");
+                    Console.WriteLine("2. Edit the price");
+                    Console.WriteLine("3. Edit the quantity");
+                    Console.WriteLine("4. Exit");
+                    Console.Write("Pick an option :");
+                    var picked = Console.ReadLine();
+                    switch (picked)
+                    {
+                        case "1":
+                            Console.WriteLine($"Enter the new name: ");
+                            string s = Console.ReadLine();
+                            if (!string.IsNullOrWhiteSpace(s))
+                            {
+                                products[index].Name = s;
+                            }
+                            break;
+                        case "2":
+                            Console.WriteLine($"Enter the new price: ");
+                            string p = Console.ReadLine();
+                            if (!string.IsNullOrWhiteSpace(p))
+                            {
+                                if (decimal.Parse(p) > 0)
+                                {
+                                    products[index].Price = decimal.Parse(p);
+                                }
+                            }
+                            break;
+                        case "3":
+                            Console.WriteLine($"Enter the new quantity: ");
+                            string q = Console.ReadLine();
+                            if (!string.IsNullOrWhiteSpace(q))
+                            {
+                                //if(int.Parse(q)>0)
+                                if(int.TryParse(q,out int newQ) && newQ>=0)
+                                {
+                                    products[index].Quantity = newQ;
+                                }
+                            }
+                            break;
+                        case "4":
+                            FinishedLoop = false;
+                            break;
+                        default:
+                            FormatColoring.MyLogMessage("Invalid choice.", ConsoleColor.Red);
+                            Console.ReadLine();
+                            continue;
+                    }
+                    if (FinishedLoop)
+                    {
+                        Console.WriteLine("Press Enter to continue...");
+                        Console.ReadLine();// important so the consol dont close and wait for messages
+                    }
+                }
+                WriteProductOnFile(products);
+                ListProducts();
+            }
+            else
+            {
+                FormatColoring.MyLogMessage($"The name {name} is not found !!",ConsoleColor.Red);
+            }
+        }
+        private static void WriteProductOnFile(List<Product> products)
+        {
+            using (StreamWriter write = new StreamWriter(pathFile))
+            {
+                foreach (var p in products)
+                {
+                    write.WriteLine(p.ToString());
+                }
+            }
         }
     }
 }
