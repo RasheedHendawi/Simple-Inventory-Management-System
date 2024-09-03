@@ -7,10 +7,6 @@
       "RelativeMoniker": "D:0:0:{58FD8E6A-D4C6-4D61-87FC-2940DFA02A0C}|ManagementSystem.csproj|solutionrelative:domain\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{58FD8E6A-D4C6-4D61-87FC-2940DFA02A0C}|ManagementSystem.csproj|c:\\users\\rrash\\desktop\\simple-inventory-management-system\\managementsystem\\domain\\datahandeling\\productrepository\\productfile.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{58FD8E6A-D4C6-4D61-87FC-2940DFA02A0C}|ManagementSystem.csproj|solutionrelative:domain\\datahandeling\\productrepository\\productfile.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{58FD8E6A-D4C6-4D61-87FC-2940DFA02A0C}|ManagementSystem.csproj|c:\\users\\rrash\\desktop\\simple-inventory-management-system\\managementsystem\\domain\\datahandeling\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{58FD8E6A-D4C6-4D61-87FC-2940DFA02A0C}|ManagementSystem.csproj|solutionrelative:domain\\datahandeling\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -22,34 +18,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ProductFile.txt",
-              "DocumentMoniker": "C:\\Users\\rrash\\Desktop\\Simple-Inventory-Management-System\\ManagementSystem\\Domain\\DataHandeling\\ProductRepository\\ProductFile.txt",
-              "RelativeDocumentMoniker": "Domain\\DataHandeling\\ProductRepository\\ProductFile.txt",
-              "ToolTip": "C:\\Users\\rrash\\Desktop\\Simple-Inventory-Management-System\\ManagementSystem\\Domain\\DataHandeling\\ProductRepository\\ProductFile.txt",
-              "RelativeToolTip": "Domain\\DataHandeling\\ProductRepository\\ProductFile.txt",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2024-08-28T20:26:06.156Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Inventory.cs",
-              "DocumentMoniker": "C:\\Users\\rrash\\Desktop\\Simple-Inventory-Management-System\\ManagementSystem\\Domain\\DataHandeling\\Inventory.cs",
-              "RelativeDocumentMoniker": "Domain\\DataHandeling\\Inventory.cs",
-              "ToolTip": "C:\\Users\\rrash\\Desktop\\Simple-Inventory-Management-System\\ManagementSystem\\Domain\\DataHandeling\\Inventory.cs",
-              "RelativeToolTip": "Domain\\DataHandeling\\Inventory.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAQwCYAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T20:11:06.898Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -58,9 +28,22 @@
               "RelativeDocumentMoniker": "Domain\\Program.cs",
               "ToolTip": "C:\\Users\\rrash\\Desktop\\Simple-Inventory-Management-System\\ManagementSystem\\Domain\\Program.cs",
               "RelativeToolTip": "Domain\\Program.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAAiwFQAAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAgwFMAAABbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T19:10:03.045Z",
+              "WhenOpened": "2024-09-03T16:28:13.391Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Inventory.cs",
+              "DocumentMoniker": "C:\\Users\\rrash\\Desktop\\Simple-Inventory-Management-System\\ManagementSystem\\Domain\\DataHandeling\\Inventory.cs",
+              "RelativeDocumentMoniker": "Domain\\DataHandeling\\Inventory.cs",
+              "ToolTip": "C:\\Users\\rrash\\Desktop\\Simple-Inventory-Management-System\\ManagementSystem\\Domain\\DataHandeling\\Inventory.cs",
+              "RelativeToolTip": "Domain\\DataHandeling\\Inventory.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABAAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-03T16:24:37.159Z",
               "EditorCaption": ""
             }
           ]

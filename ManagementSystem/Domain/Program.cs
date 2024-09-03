@@ -79,12 +79,13 @@ namespace ManagementSystem
             try
             {
                 MyLogMessage("Inventory", ConsoleColor.Green);
+                Console.WriteLine("{0,-25} {1,-20} {2,-15} ", "Name", "Price", "Quntity\n" );
                 foreach (Product p in listo)
-                    Console.WriteLine($"Name: {p.Name}          Price: {p.Price}            Quantity: {p.Quantity}");
+                    Console.WriteLine("{0,-25} {1,-20} {2,-15}",p.Name,p.Price,p.Quantity);
             }
             catch (Exception e)
             {
-                MyLogMessage("Error occurred",ConsoleColor.Red);
+                MyLogMessage($"Error occurred{e}",ConsoleColor.Red);
             }
         }
     }

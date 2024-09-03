@@ -46,5 +46,9 @@ namespace ManagementSystem.Domain
             }
             return products;
         }
+        public static void EditProduct(string name)
+        {
+            
+        }
     }
 }
