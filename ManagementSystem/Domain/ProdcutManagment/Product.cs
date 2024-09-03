@@ -28,6 +28,7 @@ namespace ManagementSystem.Domain.ProdcutManagment
             {
                 if (value <= 0)
                     throw new ArgumentException("The quantitiy can not be less than zero!");
+                quantity = value;
             }
         }
         public Product(string name, int quantity, decimal price)

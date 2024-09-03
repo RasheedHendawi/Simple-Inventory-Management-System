@@ -2,6 +2,7 @@
 using System.Drawing;
 using ManagementSystem;
 using ManagementSystem.Domain;
+using ManagementSystem.Domain.DataHandeling;
 using ManagementSystem.Domain.ProdcutManagment;
 namespace ManagementSystem
 {
@@ -30,25 +31,39 @@ namespace ManagementSystem
                         AddProduct();
                         break;
                     case "2":
-                        ListProducts();
+                        Inventory.ListProducts();
+                        break;
+                    case "3":
+                        Inventory.EditProduct();
+                        break;
+                    case "4":
+                        DeleteProduct();
+                        break;
+                    case "5":
+                        SearchProduct();
                         break;
                     case "6":
                         return;
 
                     default:
-                        MyLogMessage("Invalid choice.", ConsoleColor.Red);
+                        FormatColoring.MyLogMessage("Invalid choice.", ConsoleColor.Red);
                         break;
                 }
                 Console.WriteLine("Press Enter to continue...");
                 Console.ReadLine();// important so the consol dont close and wait for messages
             }
         }
-        static void MyLogMessage(string message, ConsoleColor color)
+
+        private static void SearchProduct()
         {
-            Console.ForegroundColor = color;
-            Console.WriteLine(message);
-            Console.ResetColor();
+            throw new NotImplementedException();
         }
+
+        private static void DeleteProduct()
+        {
+            throw new NotImplementedException();
+        }
+
         private static void AddProduct()
         {
             string name;
@@ -64,29 +79,15 @@ namespace ManagementSystem
             try
             {
                 Inventory.AddProduct(product);
-                MyLogMessage("Product is added successfully.", ConsoleColor.Green);
+                FormatColoring.MyLogMessage("Product is added successfully.", ConsoleColor.Green);
             }
             catch (Exception ex)
             {
 
-                MyLogMessage($"Error : {ex.Message}", ConsoleColor.Red);
+                FormatColoring.MyLogMessage($"Error : {ex.Message}", ConsoleColor.Red);
             }
 
         }
-        private static void ListProducts()
-        {
-            List<Product>listo=Inventory.ViewProduct();
-            try
-            {
-                MyLogMessage("Inventory", ConsoleColor.Green);
-                Console.WriteLine("{0,-25} {1,-20} {2,-15} ", "Name", "Price", "Quntity\n" );
-                foreach (Product p in listo)
-                    Console.WriteLine("{0,-25} {1,-20} {2,-15}",p.Name,p.Price,p.Quantity);
-            }
-            catch (Exception e)
-            {
-                MyLogMessage($"Error occurred{e}",ConsoleColor.Red);
-            }
-        }
+        
     }
 }
