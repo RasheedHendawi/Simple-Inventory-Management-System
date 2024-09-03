@@ -12,12 +12,36 @@ namespace ManagementSystem.Domain
     internal class Inventory
     {
         private static string pathFile = "C:/Users/rrash/Desktop/Simple-Inventory-Management-System/ManagementSystem/Domain/DataHandeling/ProductRepository/ProductFile.txt";
-        public static void AddProduct(Product p)
+        private static void AddProductToTheFile(Product p)
         {
             using (StreamWriter W= new StreamWriter(pathFile, true))   //using keyword = the finally{W.Dispose();} which ensures closing... and true here is to append
             {
                 W.WriteLine(p.ToString());
             }
+        }
+        public static void AddProduct()
+        {
+            string name;
+            decimal price;
+            int quantity;
+            Console.Write("Enter the product name: ");
+            name = Console.ReadLine();
+            Console.Write("Enter the product price: ");
+            price = Decimal.Parse(Console.ReadLine());
+            Console.Write("Enter the product quantity: ");
+            quantity = Int32.Parse(Console.ReadLine());
+            Product product = new Product(name, quantity, price);
+            try
+            {
+                AddProductToTheFile(product);
+                FormatColoring.MyLogMessage("Product is added successfully.", ConsoleColor.Green);
+            }
+            catch (Exception ex)
+            {
+
+                FormatColoring.MyLogMessage($"Error : {ex.Message}", ConsoleColor.Red);
+            }
+
         }
         public static void ListProducts()
         {
@@ -31,7 +55,7 @@ namespace ManagementSystem.Domain
             }
             catch (Exception e)
             {
-                FormatColoring.MyLogMessage($"Error occurred{e}", ConsoleColor.Red);
+                FormatColoring.MyLogMessage($"Error occurred'{e}'", ConsoleColor.Red);
             }
         }
         private static List<Product> ViewProduct()
@@ -54,7 +78,7 @@ namespace ManagementSystem.Domain
                             }
                             catch (FormatException)
                             {
-                                Console.WriteLine($"Invalid input: {R.ReadLine()}");
+                                Console.WriteLine($"Invalid input: '{R.ReadLine()}'");
                             }
                         }
                     }
@@ -134,7 +158,7 @@ namespace ManagementSystem.Domain
             }
             else
             {
-                FormatColoring.MyLogMessage($"The name {name} is not found !!",ConsoleColor.Red);
+                FormatColoring.MyLogMessage($"The name '{name}' is not found !!",ConsoleColor.Red);
             }
         }
         private static void WriteProductOnFile(List<Product> products)
@@ -146,6 +170,29 @@ namespace ManagementSystem.Domain
                     write.WriteLine(p.ToString());
                 }
             }
+        }
+        public static void DeleteProduct()
+        {
+            Console.WriteLine($"Enter the name of the product... ");
+            string name = Console.ReadLine();
+            List<Product> products = ViewProduct();
+            int index = products.FindIndex(x => x.Name.Equals(name));
+            if (index != -1)
+            {
+                products.RemoveAt(index);
+                WriteProductOnFile(products);
+                FormatColoring.MyLogMessage($"The product '{name}' Deleted succesfully !!\n", ConsoleColor.Green);
+            }
+            else
+            {
+                FormatColoring.MyLogMessage($"The name '{name}' is not found !!", ConsoleColor.Red);
+            }
+        }
+
+        public static void SearchProduct()
+        {
+            Console.WriteLine($"Enter the name of the product... ");
+            string name = Console.ReadLine();
         }
     }
 }
