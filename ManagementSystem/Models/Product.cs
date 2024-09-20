@@ -1,41 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ManagementSystem.Domain.ProdcutManagment
+namespace ManagementSystem.Models
 {
     internal class Product
-    {
+    { 
+        private int _quantity;
+        private decimal _price;
+
         public string Name { get; set; }
-        private int quantity;
-        private decimal price;
         public decimal Price
         {
-            get => price;
-            set 
+            get => _price;
+            set
             {
                 if (value <= 0)
-                    throw new ArgumentException("The price can not be less than zero!");
-                price = value;
+                    throw new ArgumentException("The price can not be less than or equal to zero!");
+                _price = value;
             }
         }
         public int Quantity
         {
-            get => quantity;
+            get => _quantity;
             set
             {
                 if (value <= 0)
                     throw new ArgumentException("The quantitiy can not be less than zero!");
-                quantity = value;
+                _quantity = value;
             }
         }
         public Product(string name, int quantity, decimal price)
         {
-            this.Name = name;
-            this.quantity = quantity;
-            this.price = price;
+            Name = name;
+            Quantity = quantity;
+            Price = price;
         }
         public override string ToString()
         {

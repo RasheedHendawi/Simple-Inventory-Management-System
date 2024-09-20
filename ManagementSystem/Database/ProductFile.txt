@@ -1,4 +1,4 @@
-Laptop;1499.99;16
+Laptop;1499.99;20
 Smartphone;50;30
 Headphones;120;25
 Keyboard;15.99;50
