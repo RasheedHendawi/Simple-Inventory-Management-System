@@ -4,12 +4,14 @@ using ManagementSystem.Utilities;
 
 namespace ManagementSystem.DataHandling
 {
+    
     internal class Inventory : IInventoryManager
     {
+        private const char LINE_SEPARATOR = ';';
         private readonly string _pathFile;
         public Inventory()
         {
-            _pathFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "Database", "ProductFile.txt");
+            _pathFile = Path.Combine(Directory.GetCurrentDirectory(),"Database", "ProductFile.txt");
         }
         private  void AddToFile(Product product)
         {
@@ -24,22 +26,25 @@ namespace ManagementSystem.DataHandling
             var products = new List<Product>();
             if (File.Exists(_pathFile))
             {
-                using (var reader = new StreamReader(_pathFile))
-                {
-                    string line;
-                    while ((line = reader.ReadLine()) != null)
-                    {
-                        var splitedNames = line.Split(';');
-                        if (splitedNames.Length == 3 && TryParseProduct(splitedNames, out var product))
-                        {
-                           Product tmp = new Product(splitedNames[0], int.Parse(splitedNames[2]), decimal.Parse(splitedNames[1]));
-                           products.Add(tmp);
-                        }
-                    }
-                }
-
+                ReadFromFile(products);
             }
             return products;
+        }
+        private void ReadFromFile(List<Product> products)
+        {
+            using (var reader = new StreamReader(_pathFile))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    var splitedNames = line.Split(LINE_SEPARATOR);
+                    if (splitedNames.Length == 3 && TryParseProduct(splitedNames, out var product))
+                    {
+                        Product tmp = new Product(splitedNames[0], int.Parse(splitedNames[2]), decimal.Parse(splitedNames[1]));
+                        products.Add(tmp);
+                    }
+                }
+            }
         }
         private static bool TryParseProduct(string[] splitedNames, out Product? product)
         {
@@ -111,7 +116,7 @@ namespace ManagementSystem.DataHandling
         }
         public void ListProducts(string edited)
         {
-               var Products = GetProducts();
+            var Products = GetProducts();
             try
             {
                 LogColoring.Log("Inventory\n", ConsoleColor.Cyan);
@@ -143,76 +148,89 @@ namespace ManagementSystem.DataHandling
             var products = GetProducts();
             var index = products.FindIndex(x => x.Name.Equals(name));
 
-            if (index != -1)
+            if (index == -1)
+            {
+                LogColoring.Log($"The name '{name}' is not found !!", ConsoleColor.Red);
+            }
+            else
             {
                 EditProductHelper(products, index);
                 WriteProductsToFile(products);
                 ListProducts(name);
             }
-            else
-            {
-                LogColoring.Log($"The name '{name}' is not found !!", ConsoleColor.Red);
-            }
         }
         private void EditProductHelper(List<Product> products, int index)
         {
             bool finishedLoop = true;
+
             while (finishedLoop)
             {
-                Console.Clear();
-                LogColoring.Log($"You are now editing {products[index].Name}.", ConsoleColor.Cyan);
-                LogColoring.Log("1. Edit the name");
-                LogColoring.Log("2. Edit the price");
-                LogColoring.Log("3. Edit the quantity");
-                LogColoring.Log("4. Exit");
-                LogColoring.LogInline("Pick an option: ");
+                DisplayEditOptions(products, index);
                 var picked = Console.ReadLine();
 
-                switch (picked)
-                {
-                    case "1":
-                        LogColoring.LogInline("Enter the new name: ");
-                        var newName = Console.ReadLine();
-                        if (!string.IsNullOrWhiteSpace(newName))
-                        {
-                            products[index].Name = newName;
-                        }
-                        break;
-
-                    case "2":
-                        LogColoring.LogInline("Enter the new price: ");
-                        if (decimal.TryParse(Console.ReadLine(), out var newPrice) && newPrice > 0)
-                        {
-                            products[index].Price = newPrice;
-                        }
-                        break;
-
-                    case "3":
-                        LogColoring.LogInline("Enter the new quantity: ");
-                        if (int.TryParse(Console.ReadLine(), out var newQuantity) && newQuantity >= 0)
-                        {
-                            products[index].Quantity = newQuantity;
-                        }
-                        break;
-
-                    case "4":
-                        finishedLoop = false;
-                        break;
-
-                    default:
-                        LogColoring.Log("Invalid choice.", ConsoleColor.Red);
-                        Console.ReadLine();
-                        continue;
-                }
+                finishedLoop = ProcessEditChoice(picked, products, index);
 
                 if (finishedLoop)
                 {
                     LogColoring.Log("Press Enter to continue...");
-                    Console.ReadLine(); 
+                    Console.ReadLine();
                 }
             }
         }
 
+        private bool ProcessEditChoice(string picked, List<Product> products, int index)
+        {
+            switch (picked)
+            {
+                case "1":
+                    LogColoring.LogInline("Enter the new name: ");
+                    var newName = Console.ReadLine();
+                    if (!string.IsNullOrWhiteSpace(newName))
+                    {
+                        products[index].Name = newName;
+                    }
+                    break;
+
+                case "2":
+                    LogColoring.LogInline("Enter the new price: ");
+                    if (decimal.TryParse(Console.ReadLine(), out var newPrice) && newPrice > 0)
+                    {
+                        products[index].Price = newPrice;
+                    }
+                    break;
+
+                case "3":
+                    LogColoring.LogInline("Enter the new quantity: ");
+                    if (int.TryParse(Console.ReadLine(), out var newQuantity) && newQuantity >= 0)
+                    {
+                        products[index].Quantity = newQuantity;
+                    }
+                    break;
+
+                case "4":
+                    return false;
+
+
+                default:
+                    LogColoring.Log("Invalid choice.", ConsoleColor.Red);
+                    Console.ReadLine();
+                    break;
+            }
+
+            return true;
+        }
+
+
+        private void DisplayEditOptions(List<Product> products, int index)
+        {
+            Console.Clear();
+            LogColoring.Log($"You are now editing {products[index].Name}.", ConsoleColor.Cyan);
+            LogColoring.Log("1. Edit the name");
+            LogColoring.Log("2. Edit the price");
+            LogColoring.Log("3. Edit the quantity");
+            LogColoring.Log("4. Exit");
+            LogColoring.LogInline("Pick an option: ");
+        }
 
         public void DeleteProduct()
         {
