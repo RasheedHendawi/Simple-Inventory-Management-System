@@ -2,10 +2,16 @@
 
 namespace ManagementSystem.Models
 {
-    internal class Product
+    public class Product
     { 
         private int _quantity;
         private decimal _price;
+        public Product(string name, int quantity, decimal price)
+        {
+            Name = name;
+            Quantity = quantity;
+            Price = price;
+        }
 
         public string Name { get; set; }
         public decimal Price
@@ -27,12 +33,6 @@ namespace ManagementSystem.Models
                     throw new ArgumentException("The quantitiy can not be less than zero!");
                 _quantity = value;
             }
-        }
-        public Product(string name, int quantity, decimal price)
-        {
-            Name = name;
-            Quantity = quantity;
-            Price = price;
         }
         public override string ToString()
         {

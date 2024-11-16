@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ManagementSystem.Utilities
 {
-    internal class LogColoring
+    public class LogColoring
     {
         public static void Log(string message, ConsoleColor color)
         {

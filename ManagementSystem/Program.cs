@@ -1,6 +1,7 @@
 ﻿using ManagementSystem.DataHandling;
 using ManagementSystem.Interfaces;
 using ManagementSystem.Utilities;
+using Microsoft.Extensions.Configuration;
 
 namespace ManagementSystem
 {
@@ -56,7 +57,19 @@ namespace ManagementSystem
 
         private static void HandleUserChoice(string? picked)
         {
-            IInventoryManager inventory = new Inventory();
+            var configuration = new ConfigurationBuilder()
+            .SetBasePath(AppContext.BaseDirectory)
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            .Build();
+            var connecter = configuration.GetConnectionString("InventoryDB");
+            if (string.IsNullOrEmpty(connecter))
+            {
+                LogColoring.LogFormatted("Error: Connection string is missing or invalid." +
+                    " Please check your appsettings.json file.", ConsoleColor.Red);
+                return;
+            }
+            IInventoryManager inventory = new SqlInventoryManager(connecter);
+            //IInventoryManager inventory = new FileInventoryManager();
             switch (picked)
             {
                 case "1":

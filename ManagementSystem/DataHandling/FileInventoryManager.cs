@@ -5,11 +5,11 @@ using ManagementSystem.Utilities;
 namespace ManagementSystem.DataHandling
 {
     
-    internal class Inventory : IInventoryManager
+    internal class FileInventoryManager : IInventoryManager
     {
         private const char LINE_SEPARATOR = ';';
         private readonly string _pathFile;
-        public Inventory()
+        public FileInventoryManager()
         {
             _pathFile = Path.Combine(Directory.GetCurrentDirectory(),"Database", "ProductFile.txt");
         }

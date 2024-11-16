@@ -1,5 +1,4 @@
-﻿using ManagementSystem.Models;
-
+﻿
 namespace ManagementSystem.Interfaces
 {
     public interface IInventoryManager
