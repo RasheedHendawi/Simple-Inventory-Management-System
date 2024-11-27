@@ -68,8 +68,9 @@ namespace ManagementSystem
                     " Please check your appsettings.json file.", ConsoleColor.Red);
                 return;
             }
-            IInventoryManager inventory = new SqlInventoryManager(connecter);
+            //IInventoryManager inventory = new SqlInventoryManager(connecter);
             //IInventoryManager inventory = new FileInventoryManager();
+            IInventoryManager inventory = new MongoDBInventoryManager(configuration);
             switch (picked)
             {
                 case "1":

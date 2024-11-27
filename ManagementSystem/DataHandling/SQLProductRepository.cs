@@ -3,7 +3,7 @@ using Microsoft.Data.SqlClient;
 
 namespace ManagementSystem.DataHandling
 {
-    public class ProductRepository(string connectionString)
+    public class SQLProductRepository(string connectionString)
     {
         private readonly string _connectionString = connectionString;
 
