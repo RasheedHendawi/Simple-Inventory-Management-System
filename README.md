@@ -1,5 +1,5 @@
 # Simple-Inventory-Management-System
-This is a console-based application that provides a basic inventory management system. The system allows users to manage a list of products, where each product has a name, price, and quantity in stock.
+This is a console-based application that provides a basic inventory management system. The system allows users to manage a list of products, where each product has a name, price, and quantity in stock. The application supports multiple storage options, including MongoDB, MSSQL, and File System.
 
 ## Features
 
